@@ -1,0 +1,20 @@
+<!-- templates/training_unit/dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}لوحة تحكم رئيس الوحدة{% endblock %}
+
+{% block content %}
+<h1>مرحبًا بك، {{ user.get_full_name }}</h1>
+<ul>
+    <li><a href="{% url 'training_unit:manage_students' %}">إدارة بيانات الطلاب</a></li>
+    <li><a href="{% url 'training_unit:manage_supervisors' %}">إدارة بيانات المشرفين</a></li>
+    <li><a href="{% url 'training_unit:assign_supervisors' %}">تعيين مشرفين</a></li>
+    <li><a href="{% url 'training_unit:manage_training_entities' %}">إدارة جهات التدريب</a></li>
+    <li><a href="{% url 'training_unit:manage_training_requests' %}">إدارة طلبات التدريب</a></li>
+    <li><a href="{% url 'training_unit:manage_letter_requests' %}">إدارة طلبات الخطابات</a></li>
+    <li><a href="{% url 'training_unit:deliver_letters' %}">تسليم الخطابات</a></li>
+    <li><a href="{% url 'training_unit:archive' %}">عرض الأرشفة</a></li>
+    <li><a href="{% url 'training_unit:messages' %}">الرسائل</a></li>
+</ul>
+{% endblock %}

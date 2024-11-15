@@ -1,0 +1,19 @@
+<!-- templates/supervisors/review_report.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}مراجعة التقرير{% endblock %}
+
+{% block content %}
+<h1>مراجعة التقرير</h1>
+<p><strong>الطالب:</strong> {{ report.student.get_full_name }}</p>
+<p><strong>نوع التقرير:</strong> {{ report.get_report_type_display }}</p>
+<p><strong>تاريخ الرفع:</strong> {{ report.date_uploaded|date:"Y-m-d" }}</p>
+<p><strong>ملف التقرير:</strong> <a href="{{ report.file.url }}">تنزيل</a></p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">تحديث</button>
+</form>
+{% endblock %}

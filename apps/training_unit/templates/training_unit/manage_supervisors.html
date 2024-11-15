@@ -1,0 +1,25 @@
+<!-- templates/training_unit/manage_supervisors.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}إدارة بيانات المشرفين{% endblock %}
+
+{% block content %}
+<h1>إدارة بيانات المشرفين</h1>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>الاسم</th>
+        <th>القسم</th>
+        <th>الحالة</th>
+        <th>تعديل</th>
+    </tr>
+    {% for supervisor in supervisors %}
+    <tr>
+        <td>{{ supervisor.user.get_full_name }}</td>
+        <td>{{ supervisor.department }}</td>
+        <td>{{ supervisor.get_status_display }}</td>
+        <td><a href="{% url 'training_unit:edit_supervisor' supervisor.id %}">تعديل</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

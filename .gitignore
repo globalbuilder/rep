@@ -1,0 +1,18 @@
+# Environment variables
+.env
+
+# Python bytecode
+*.pyc
+__pycache__/
+
+# Virtual environment
+venv/
+
+
+# Media files (if your project includes user-uploaded files)
+media/
+staticfiles/
+
+# IDE settings
+.vscode/
+.idea/

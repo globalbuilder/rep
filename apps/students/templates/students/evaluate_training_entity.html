@@ -1,0 +1,19 @@
+<!-- templates/students/evaluate_training_entity.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}تقييم جهة التدريب{% endblock %}
+
+{% block content %}
+<h1>تقييم جهة التدريب</h1>
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <p>
+            <strong>{{ field.label }}</strong><br>
+            {{ field }}
+        </p>
+    {% endfor %}
+    <button type="submit">إرسال التقييم</button>
+</form>
+{% endblock %}

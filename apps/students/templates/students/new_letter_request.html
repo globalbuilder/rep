@@ -1,0 +1,14 @@
+<!-- templates/students/new_letter_request.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}تقديم طلب خطاب جديد{% endblock %}
+
+{% block content %}
+<h1>تقديم طلب خطاب جديد</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">إرسال</button>
+</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!-- templates/students/reports.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}التقارير{% endblock %}
+
+{% block content %}
+<h1>التقارير</h1>
+<a href="{% url 'students:upload_report' %}">رفع تقرير جديد</a>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>نوع التقرير</th>
+        <th>تاريخ الرفع</th>
+        <th>الحالة</th>
+        <th>تعليقات المشرف</th>
+        <th>ملف التقرير</th>
+    </tr>
+    {% for report in reports %}
+    <tr>
+        <td>{{ report.get_report_type_display }}</td>
+        <td>{{ report.date_uploaded|date:"Y-m-d" }}</td>
+        <td>{{ report.get_status_display }}</td>
+        <td>{{ report.supervisor_comments }}</td>
+        <td><a href="{{ report.file.url }}">تنزيل</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- templates/supervisors/evaluations.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}التقييمات{% endblock %}
+
+{% block content %}
+<h1>التقييمات المرسلة</h1>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>الطالب</th>
+        <th>التاريخ</th>
+        <th>المجموع النهائي</th>
+        <th>التفاصيل</th>
+    </tr>
+    {% for evaluation in evaluations %}
+    <tr>
+        <td>{{ evaluation.student.get_full_name }}</td>
+        <td>{{ evaluation.date_submitted|date:"Y-m-d" }}</td>
+        <td>{{ evaluation.total_score }}</td>
+        <td><a href="{% url 'supervisors:view_evaluation' evaluation.id %}">عرض</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

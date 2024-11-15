@@ -1,0 +1,14 @@
+<!-- templates/training_unit/add_training_entity.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}إضافة جهة تدريب{% endblock %}
+
+{% block content %}
+<h1>إضافة جهة تدريب جديدة</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">إضافة</button>
+</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+<!-- templates/404.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}الصفحة غير موجودة{% endblock %}
+
+{% block content %}
+<h1>عذراً، الصفحة التي تبحث عنها غير موجودة.</h1>
+<p>قد تكون الصفحة تم نقلها أو لا توجد.</p>
+<a href="{% url 'home' %}">العودة إلى الصفحة الرئيسية</a>
+{% endblock %}

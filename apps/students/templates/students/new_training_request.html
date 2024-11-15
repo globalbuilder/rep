@@ -1,0 +1,14 @@
+<!-- templates/students/new_training_request.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}تقديم طلب تدريب جديد{% endblock %}
+
+{% block content %}
+<h1>تقديم طلب تدريب جديد</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">إرسال</button>
+</form>
+{% endblock %}

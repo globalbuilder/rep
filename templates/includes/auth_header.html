@@ -1,0 +1,37 @@
+{% load static %}
+<header>
+    <div class="header-container">
+        <!-- University Logo on the left -->
+        <div class="header-logo">
+            <img src="{% static 'images/university_logo.png' %}" alt="شعار الجامعة">
+        </div>
+
+        <!-- Right side icons -->
+        <div class="header-right">
+            <!-- Account icon and username -->
+            <div class="user-info">
+                <a href="{% url 'accounts:profile' %}">
+                    <i class="fas fa-user-circle"></i>
+                    <span>{{ user.get_full_name }}</span>
+                </a>
+            </div>
+
+            <!-- Messages icon -->
+            <div class="messages-icon">
+                <a href="{% url 'communications:inbox' %}">
+                    <i class="fas fa-envelope"></i>
+                    {% if unread_messages_count > 0 %}
+                        <span class="badge">{{ unread_messages_count }}</span>
+                    {% endif %}
+                </a>
+            </div>
+
+            <!-- Logout icon -->
+            <div class="logout-icon">
+                <a href="{% url 'accounts:logout' %}">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>

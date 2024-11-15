@@ -1,0 +1,118 @@
+<!-- apps/your_app/templates/includes/sidebar.html -->
+{% load static %}
+<nav class="sidebar-container">
+
+    {% if user.user_type == 'student' %}
+        <!-- Student Sidebar -->
+        <!-- الرئيسية Section -->
+        <div class="sidebar-section">
+            <div class="section-header">
+                <span class="section-title">الرئيسية</span>
+            </div>
+            <ul>
+                <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                    <a href="{% url 'students:dashboard' %}">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-divider"></div>
+        </div>
+
+        <!-- طلبات التدريب Section -->
+        <div class="sidebar-section">
+            <div class="section-header">
+                <span class="section-title">طلبات التدريب</span>
+            </div>
+            <ul>
+                <li class="{% if request.resolver_match.url_name == 'training_requests' %}active{% endif %}">
+                    <a href="{% url 'students:training_requests' %}">
+                        <i class="fas fa-file-alt"></i>
+                        <span>تقديم طلب تدريب</span>
+                    </a>
+                </li>
+                <!-- Add other student links here -->
+            </ul>
+            <div class="sidebar-divider"></div>
+        </div>
+
+        <!-- Add other sections for student -->
+
+    {% elif user.user_type == 'supervisor' %}
+        <!-- Supervisor Sidebar -->
+        <!-- الرئيسية Section -->
+        <div class="sidebar-section">
+            <div class="section-header">
+                <span class="section-title">الرئيسية</span>
+            </div>
+            <ul>
+                <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                    <a href="{% url 'supervisors:dashboard' %}">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-divider"></div>
+        </div>
+
+        <!-- Supervisor Sections -->
+        <div class="sidebar-section">
+            <div class="section-header">
+                <span class="section-title">الطلاب</span>
+            </div>
+            <ul>
+                <li class="{% if request.resolver_match.url_name == 'student_list' %}active{% endif %}">
+                    <a href="{% url 'supervisors:student_list' %}">
+                        <i class="fas fa-users"></i>
+                        <span>قائمة الطلاب</span>
+                    </a>
+                </li>
+                <!-- Add other supervisor links here -->
+            </ul>
+            <div class="sidebar-divider"></div>
+        </div>
+
+        <!-- Add other sections for supervisor -->
+
+    {% elif user.user_type == 'head' %}
+        <!-- Head Sidebar -->
+        <!-- الرئيسية Section -->
+        <div class="sidebar-section">
+            <div class="section-header">
+                <span class="section-title">الرئيسية</span>
+            </div>
+            <ul>
+                <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                    <a href="{% url 'head:dashboard' %}">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-divider"></div>
+        </div>
+
+        <!-- Training Unit Head Sections -->
+        <div class="sidebar-section">
+            <div class="section-header">
+                <span class="section-title">إدارة</span>
+            </div>
+            <ul>
+                <li class="{% if request.resolver_match.url_name == 'manage_students' %}active{% endif %}">
+                    <a href="{% url 'head:manage_students' %}">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>إدارة الطلاب</span>
+                    </a>
+                </li>
+                <!-- Add other head links here -->
+            </ul>
+            <div class="sidebar-divider"></div>
+        </div>
+
+        <!-- Add other sections for head -->
+
+    {% endif %}
+
+</nav>

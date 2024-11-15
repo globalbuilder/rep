@@ -1,0 +1,22 @@
+<!-- apps/communications/templates/communications/view_message.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}عرض الرسالة{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/view_message.css' %}">
+{% endblock %}
+
+{% block auth_content %}
+<div class="message-view-container">
+    <h1>{{ message.subject }}</h1>
+    <p><strong>من:</strong> {{ message.sender.get_full_name }}</p>
+    <p><strong>إلى:</strong> {{ message.receiver.get_full_name }}</p>
+    <p><strong>التاريخ:</strong> {{ message.sent_at|date:"d M Y, H:i" }}</p>
+    <hr>
+    <div class="message-content">
+        {{ message.content|linebreaks }}
+    </div>
+</div>
+{% endblock %}

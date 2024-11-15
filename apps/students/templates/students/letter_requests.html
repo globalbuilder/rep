@@ -1,0 +1,26 @@
+<!-- templates/students/letter_requests.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}طلبات الخطابات{% endblock %}
+
+{% block content %}
+<h1>طلبات الخطابات</h1>
+<a href="{% url 'students:new_letter_request' %}">تقديم طلب خطاب جديد</a>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>نوع الخطاب</th>
+        <th>تاريخ التقديم</th>
+        <th>الحالة</th>
+        <th>تعليقات</th>
+    </tr>
+    {% for request in requests %}
+    <tr>
+        <td>{{ request.get_letter_type_display }}</td>
+        <td>{{ request.date_submitted|date:"Y-m-d" }}</td>
+        <td>{{ request.get_status_display }}</td>
+        <td>{{ request.comments }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

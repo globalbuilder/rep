@@ -1,0 +1,15 @@
+<!-- templates/supervisors/dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}لوحة تحكم المشرف{% endblock %}
+
+{% block content %}
+<h1>مرحبًا بك، {{ user.get_full_name }}</h1>
+<ul>
+    <li><a href="{% url 'supervisors:student_list' %}">قائمة الطلاب</a></li>
+    <li><a href="{% url 'supervisors:reports' %}">تقارير الطلاب</a></li>
+    <li><a href="{% url 'supervisors:evaluations' %}">التقييمات</a></li>
+    <li><a href="{% url 'supervisors:messages' %}">الرسائل</a></li>
+</ul>
+{% endblock %}

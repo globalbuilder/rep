@@ -1,0 +1,20 @@
+<!-- apps/students/templates/students/dashboard.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}الرئيسية - منصة الطالب{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/student_dashboard.css' %}">
+{% endblock %}
+
+{% block auth_content %}
+<!-- Welcome Section -->
+<div class="welcome-section">
+    <h1>مرحبا بك، {{ user.get_full_name }}</h1>
+    <p>هذه هي صفحتك الرئيسية حيث يمكنك الوصول السريع إلى المهام والبيانات الهامة.</p>
+</div>
+
+<!-- Dashboard content here -->
+
+{% endblock %}

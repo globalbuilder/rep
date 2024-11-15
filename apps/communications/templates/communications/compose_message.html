@@ -1,0 +1,25 @@
+<!-- apps/communications/templates/communications/compose_message.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}إنشاء رسالة{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/compose_message.css' %}">
+{% endblock %}
+
+{% block auth_content %}
+<div class="compose-container">
+    <h1>إنشاء رسالة جديدة</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <p class="message">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">إرسال</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+<!-- templates/training_unit/edit_supervisor.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}تعديل بيانات المشرف{% endblock %}
+
+{% block content %}
+<h1>تعديل بيانات المشرف</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">حفظ</button>
+</form>
+{% endblock %}

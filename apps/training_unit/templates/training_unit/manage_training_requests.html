@@ -1,0 +1,27 @@
+<!-- templates/training_unit/manage_training_requests.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}إدارة طلبات التدريب{% endblock %}
+
+{% block content %}
+<h1>إدارة طلبات التدريب</h1>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>الطالب</th>
+        <th>جهة التدريب</th>
+        <th>تاريخ التقديم</th>
+        <th>الحالة</th>
+        <th>تعديل</th>
+    </tr>
+    {% for request in requests %}
+    <tr>
+        <td>{{ request.student.get_full_name }}</td>
+        <td>{{ request.training_entity.name }}</td>
+        <td>{{ request.date_submitted|date:"Y-m-d" }}</td>
+        <td>{{ request.get_status_display }}</td>
+        <td><a href="#">تعديل</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

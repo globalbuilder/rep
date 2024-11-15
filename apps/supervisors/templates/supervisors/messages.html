@@ -1,0 +1,46 @@
+<!-- templates/supervisors/messages.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}الرسائل{% endblock %}
+
+{% block content %}
+<h1>الرسائل</h1>
+<p><a href="{% url 'communications:compose_message' %}">إنشاء رسالة جديدة</a></p>
+
+<h2>الوارد</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>المرسل</th>
+        <th>الموضوع</th>
+        <th>التاريخ</th>
+        <th>عرض</th>
+    </tr>
+    {% for msg in inbox %}
+    <tr>
+        <td>{{ msg.sender.get_full_name }}</td>
+        <td>{{ msg.subject }}</td>
+        <td>{{ msg.date_sent|date:"Y-m-d H:i" }}</td>
+        <td><a href="{% url 'communications:view_message' msg.id %}">عرض</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>الصادر</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>المستلم</th>
+        <th>الموضوع</th>
+        <th>التاريخ</th>
+        <th>عرض</th>
+    </tr>
+    {% for msg in sent %}
+    <tr>
+        <td>{{ msg.receiver.get_full_name }}</td>
+        <td>{{ msg.subject }}</td>
+        <td>{{ msg.date_sent|date:"Y-m-d H:i" }}</td>
+        <td><a href="{% url 'communications:view_message' msg.id %}">عرض</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

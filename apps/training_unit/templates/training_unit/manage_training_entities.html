@@ -1,0 +1,30 @@
+<!-- templates/training_unit/manage_training_entities.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}إدارة جهات التدريب{% endblock %}
+
+{% block content %}
+<h1>إدارة جهات التدريب</h1>
+<a href="{% url 'training_unit:add_training_entity' %}">إضافة جهة تدريب جديدة</a>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>اسم الجهة</th>
+        <th>العنوان</th>
+        <th>التخصصات</th>
+        <th>تعديل</th>
+    </tr>
+    {% for entity in entities %}
+    <tr>
+        <td>{{ entity.name }}</td>
+        <td>{{ entity.address }}</td>
+        <td>
+            {% for spec in entity.specializations.all %}
+                {{ spec.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </td>
+        <td><a href="#">تعديل</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

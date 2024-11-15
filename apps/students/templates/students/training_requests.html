@@ -1,0 +1,26 @@
+<!-- templates/students/training_requests.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}طلبات التدريب{% endblock %}
+
+{% block content %}
+<h1>طلبات التدريب</h1>
+<a href="{% url 'students:new_training_request' %}">تقديم طلب تدريب جديد</a>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>جهة التدريب</th>
+        <th>تاريخ التقديم</th>
+        <th>الحالة</th>
+        <th>تعليقات</th>
+    </tr>
+    {% for request in requests %}
+    <tr>
+        <td>{{ request.training_entity.name }}</td>
+        <td>{{ request.date_submitted|date:"Y-m-d" }}</td>
+        <td>{{ request.get_status_display }}</td>
+        <td>{{ request.comments }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

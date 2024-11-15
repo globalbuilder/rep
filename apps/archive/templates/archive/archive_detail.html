@@ -1,0 +1,14 @@
+<!-- templates/archive/archive_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}الأرشيف - {{ year }}{% endblock %}
+
+{% block content %}
+<h1>الأرشيف لسنة {{ year }}</h1>
+<!-- Display archived data -->
+{% for archive in archives %}
+    <h2>{{ archive.student.get_full_name }}</h2>
+    <p>{{ archive.data }}</p>
+{% endfor %}
+{% endblock %}

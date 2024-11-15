@@ -1,0 +1,31 @@
+<!-- templates/supervisors/reports.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}تقارير الطلاب{% endblock %}
+
+{% block content %}
+<h1>تقارير الطلاب</h1>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>الطالب</th>
+        <th>نوع التقرير</th>
+        <th>تاريخ الرفع</th>
+        <th>الحالة</th>
+        <th>تعليقات المشرف</th>
+        <th>ملف التقرير</th>
+        <th>مراجعة</th>
+    </tr>
+    {% for report in reports %}
+    <tr>
+        <td>{{ report.student.get_full_name }}</td>
+        <td>{{ report.get_report_type_display }}</td>
+        <td>{{ report.date_uploaded|date:"Y-m-d" }}</td>
+        <td>{{ report.get_status_display }}</td>
+        <td>{{ report.supervisor_comments }}</td>
+        <td><a href="{{ report.file.url }}">تنزيل</a></td>
+        <td><a href="{% url 'supervisors:review_report' report.id %}">مراجعة</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

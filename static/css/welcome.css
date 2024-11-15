@@ -1,0 +1,62 @@
+/* static/css/auth/index.css */
+
+/* Welcome Section Styles */
+.welcome-section {
+    width: 55%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.welcome-section h2 {
+    font-size: 35px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.welcome-section p {
+    font-size: 21px;
+    font-weight: 400;
+}
+
+/* Project Logo Section */
+.project-logo-section img {
+    width: 85%;
+    max-width: 430px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Index Button Section */
+.index-button-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.bottom-line,
+.top-line {
+    height: 6px;
+    background-color: var(--primary-color);
+    width: 85%;
+    max-width: 430px;
+}
+
+a.index-button {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    text-decoration: none;
+    padding: 25px 35px;
+    font-size: 28px;
+    border-radius: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    transition: background-color 0.3s ease;
+}
+
+a.index-button:hover {
+    background-color: var(--hover-button-color);
+}
