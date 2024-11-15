@@ -16,11 +16,12 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = env.bool
-DEBUG = True
+DEBUG = False
 
 SECRET_KEY = env('SECRET_KEY', default='12345')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['ctup.pythonanywhere.com']
+
 
 
 # Application definition
